@@ -30,8 +30,7 @@ from collections import Counter
 from json import loads
 from polyfuzz import PolyFuzz
 from polyfuzz.models import RapidFuzz
-st.header("KWR in 5 minutes")
-s
+st.header("Keyword research")
 input_keywords=st.sidebar.text_area(label="enter keywords one by line")
 lang_code=st.sidebar.text_input(label='Language code e.g. en')
 input_keywords = input_keywords.split('\n')
@@ -48,16 +47,19 @@ if len(input_keywords[0])>0 and len(lang_code)>0:
      for keyword in keywordlist: 
           for letter in letterlist :
               URL="http://suggestqueries.google.com/complete/search?client=firefox&hl="+str(lang_code)+"&q="+keyword+" "+letter
-              headers = {'User-agent':'Mozilla/5.0'} 
+              headers = {'User-agent':'Mozilla/5.0'}
+              time.sleep(1)
+              st.write(URL) 
               response = requests.get(URL, headers=headers) 
-          result = json.loads(response.content.decode('utf-8'))
-          keywordsuggest=[keyword,letter] 
-          for word in result[1]:
-              if(word!=keyword):
-                  keywordsuggest.append(word)
-                  time.sleep(0.1)
-              keywordsuggestions.append(keywordsuggest)
-          #crearte a dataframe from this list
+              
+              result = json.loads(response.content.decode('utf-8'))
+              keywordsuggest=[keyword,letter] 
+              for word in result[1]:
+                  if(word!=keyword):
+                      keywordsuggest.append(word)
+                      time.sleep(1)
+                  keywordsuggestions.append(keywordsuggest)
+              #crearte a dataframe from this list
           keywordsuggestions_df = pd.DataFrame(keywordsuggestions)
 
           columnnames=["Keyword","Letter"]
