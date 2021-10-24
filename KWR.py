@@ -49,7 +49,7 @@ if len(input_keywords[0])>0 and len(lang_code)>0:
               URL="http://suggestqueries.google.com/complete/search?client=firefox&hl="+str(lang_code)+"&q="+keyword+" "+letter
               headers = {'User-agent':'Mozilla/5.0'}
               time.sleep(1)
-              st.write(URL) 
+              #st.write(URL) 
               response = requests.get(URL, headers=headers) 
               
               result = json.loads(response.content.decode('utf-8'))
