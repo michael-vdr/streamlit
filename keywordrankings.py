@@ -4,9 +4,10 @@ import random
 st.header("Find the rankings of a list of keywords and compare with best page of direct competitor")
 st.sidebar.header("Settings")
 input_keywords=st.sidebar.text_area(label="Keywords one by line")
+website=st.sidebar.text_input(label="Your website e.g. website.com")
 input_competitors=st.sidebar.text_area(label="Competitor domains one by line e.g competitor.com")
 
-website=st.sidebar.text_input(label="Website e.g. website.com")
+
 se_name=st.sidebar.text_input(label='Search Engine: e.g. google.com')
 se_language=st.sidebar.text_input(label='Language e.g. English')
 loc_name_canonical=st.sidebar.text_input(label='Country e.g. Belgium')
