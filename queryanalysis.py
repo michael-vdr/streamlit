@@ -32,7 +32,7 @@ if(search_console_file is not None):
 		groupdf["CTR"]=groupdf.apply(lambda x:round(x["Clicks"]*100/x["Impressions"],2),axis=1)
 		groupdf = groupdf.head(numberwords)
 		groupdf["1-Gram"]=groupdf.index
-		fig = px.bar(groupdf, x="1-Gram", y="Impressions", color='CTR', barmode='group', title="1-Gram Analysis Impressions",text_auto=True)
+		fig = px.bar(groupdf, x="1-Gram", y="Impressions", color='CTR', barmode='group', title="1-Gram Analysis Impressions")
 		#fig.show()
 		st.plotly_chart(fig, use_container_width=True)
 		st.write("performing 1-gram analysis")
