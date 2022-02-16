@@ -16,7 +16,7 @@ if(search_console_file is not None):
 	stopwords_language=st.selectbox('Main language',["english","dutch","french","german"])
 	#branded=st.text_input('Enter brand name')
 	numberwords = st.number_input('Number of words', min_value=1, max_value=50, value=25, step=1)
-	if(st.button('1-gram analysis')):
+	if(st.button('Run 1-gram analysis')):
 		analysis=1
 		stopwords = stopwords.words(stopwords_language)
 
