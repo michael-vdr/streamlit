@@ -15,7 +15,7 @@ if(search_console_file is not None):
     #analysistype = st.selectbox('Which kind of analysis would you like?',['N-gram','Machine learning CTR','Potential #1 Clicks','Group by search intent'])
 	stopwords_language=st.selectbox('Main language',["english","dutch","french","german"])
 	#branded=st.text_input('Enter brand name')
-	numberwords = st.number_input('Number of words', min_value=1, max_value=100, value=25, step=1)
+	numberwords = st.number_input('Number of words', min_value=1, max_value=50, value=25, step=1)
 	if(st.button('1-gram analysis')):
 		analysis=1
 		stopwords = stopwords.words(stopwords_language)
@@ -33,7 +33,8 @@ if(search_console_file is not None):
 		groupdf = groupdf.head(numberwords)
 		groupdf["1-Gram"]=groupdf.index
 		fig = px.bar(groupdf, x="1-Gram", y="Impressions", color='CTR', barmode='group', title="1-Gram Analysis Impressions",text_auto=True)
-		fig.show()
+		#fig.show()
+		st.plotly_chart(fig, use_container_width=True)
 		st.write("performing 1-gram analysis")
 else:
 	st.write("Upload your file!")
